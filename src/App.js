@@ -1,33 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 
-function MyComponent(prop) {
+function Card(props) {
   return (
-    <>
-      <p>Hello world</p>
-      <p>My name is {prop.name}</p>
-    </>
+    <section>
+      <h2>{props.icon} Title</h2>
+      {props.children}
+    </section>
   );
+}
+
+function MyIcon() {
+  return <i>🔥</i>;
 }
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-        <MyComponent name='Huy' />
-      </header>
+    <div>
+      <Card icon={<MyIcon />}>
+        <p>Hello world</p>
+      </Card>
     </div>
   );
 }

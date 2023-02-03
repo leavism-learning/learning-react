@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function Card(props) {
@@ -14,13 +14,29 @@ function MyIcon() {
   return <i>🔥</i>;
 }
 
-function App() {
+const LoadingButton = (props) => {
   return (
-    <div>
-      <Card icon={<MyIcon />}>
-        <p>Hello world</p>
-      </Card>
-    </div>
+    <button onClick={props.onClick} type='button'>
+      {props.loading ? <div className='loader' /> : props.label}
+    </button>
+  );
+};
+
+function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  return (
+    <>
+      <div>
+        <Card icon={<MyIcon />}>
+          <p>Hello world</p>
+        </Card>
+      </div>
+      <LoadingButton
+        label='Press me'
+        loading={isLoading}
+        onClick={() => setIsLoading(!isLoading)}
+      />
+    </>
   );
 }
 

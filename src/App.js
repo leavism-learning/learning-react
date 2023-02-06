@@ -22,6 +22,23 @@ const LoadingButton = (props) => {
   );
 };
 
+const data = [
+  { id: 1, name: 'Fido 🐕' },
+  { id: 2, name: 'Snowball 🐈' },
+  { id: 3, name: 'Murph 🐈‍⬛' },
+  { id: 4, name: 'Zelda 🐈' },
+];
+
+function ListOfAnimals() {
+  return (
+    <ul>
+      {data.map((animal) => {
+        return <li key={animal.id}>{animal.name}</li>;
+      })}
+    </ul>
+  );
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   return (
@@ -36,6 +53,7 @@ function App() {
         loading={isLoading}
         onClick={() => setIsLoading(!isLoading)}
       />
+      <ListOfAnimals />
     </>
   );
 }

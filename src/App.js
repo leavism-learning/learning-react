@@ -14,10 +14,10 @@ function MyIcon() {
   return <i>🔥</i>;
 }
 
-const LoadingButton = (props) => {
+const IncrementButton = (props) => {
   return (
     <button onClick={props.onClick} type='button'>
-      {props.loading ? <div className='loader' /> : props.label}
+      {props.children}
     </button>
   );
 };
@@ -40,11 +40,10 @@ function ListOfAnimals() {
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [count, setCount] = useState(0);
 
-  function submitHandler(event) {
-    setIsLoading(!isLoading);
-    console.log(event);
+  function handleClick(event) {
+    setCount(count + 1);
   }
 
   return (
@@ -54,14 +53,9 @@ function App() {
           <p>Hello world</p>
         </Card>
       </div>
-      <LoadingButton
-        label='Press me'
-        loading={isLoading}
-        onClick={(event) => {
-          submitHandler(event);
-        }}
-      />
       <ListOfAnimals />
+      <h2>{count}</h2>
+      <IncrementButton onClick={handleClick}>Increment</IncrementButton>
     </>
   );
 }

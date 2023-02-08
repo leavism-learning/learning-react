@@ -41,6 +41,12 @@ function ListOfAnimals() {
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
+
+  function submitHandler(event) {
+    setIsLoading(!isLoading);
+    console.log(event);
+  }
+
   return (
     <>
       <div>
@@ -51,7 +57,9 @@ function App() {
       <LoadingButton
         label='Press me'
         loading={isLoading}
-        onClick={() => setIsLoading(!isLoading)}
+        onClick={(event) => {
+          submitHandler(event);
+        }}
       />
       <ListOfAnimals />
     </>

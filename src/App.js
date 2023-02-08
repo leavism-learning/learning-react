@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import './App.css';
 
 function Card(props) {
@@ -75,6 +75,28 @@ const Countdown = ({ hour, minute, second }) => {
     </>
   );
 };
+
+const CountContext = createContext();
+
+function PropDrilling() {
+  const [count] = useState(0);
+
+  return (
+    <CountContext.Provider value={count}>
+      <Child />
+    </CountContext.Provider>
+  );
+}
+
+function Child() {
+  return <GrandChild />;
+}
+
+function GrandChild() {
+  const count = useContext(CountContext);
+
+  return <div>{count}</div>;
+}
 
 function App() {
   const [count, setCount] = useState(0);

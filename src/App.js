@@ -54,6 +54,11 @@ const Countdown = ({ hour, minute, second }) => {
 
   const handlePause = () => setPaused(!paused);
   const format = (val) => val.toString().padStart(2, '0');
+  const handleReset = () => {
+    setTime([hour, minute, second]);
+    setPaused(true);
+    setOver(false);
+  };
 
   useEffect(() => {
     let ticker = setInterval(() => tick(), 1000);
@@ -66,6 +71,7 @@ const Countdown = ({ hour, minute, second }) => {
     <>
       <h3 className='countdown'>{`${format(h)}:${format(m)}:${format(s)}`}</h3>
       <button onClick={handlePause}>{paused ? 'Start' : 'Pause'}</button>
+      <button onClick={handleReset}>Reset</button>
     </>
   );
 };

@@ -78,24 +78,18 @@ const Countdown = ({ hour, minute, second }) => {
 
 const CountContext = createContext();
 
-function PropDrilling() {
-  const [count] = useState(0);
-
+function CountProvider({ children }) {
+  const [count, setCount] = useState(0);
   return (
-    <CountContext.Provider value={count}>
-      <Child />
+    <CountContext.Provider value={{ count, setCount }}>
+      {children}
     </CountContext.Provider>
   );
 }
 
-function Child() {
-  return <GrandChild />;
-}
-
-function GrandChild() {
-  const count = useContext(CountContext);
-
-  return <div>{count}</div>;
+function Count() {
+  const { count } = useContext(CountContext);
+  return <h3>{`Current count: ${count}`}</h3>;
 }
 
 function App() {
@@ -113,11 +107,12 @@ function App() {
         </Card>
       </div>
       <ListOfAnimals />
-      <h2>{count}</h2>
-      <CustomButton onClick={incrementClick}>Increment</CustomButton>
       <div>
         <Countdown hour={1} minute={45} second={0} />
       </div>
+      <CountProvider>
+        <Count />
+      </CountProvider>
     </>
   );
 }

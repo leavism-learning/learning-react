@@ -92,13 +92,16 @@ function Count() {
   return <h3>{`Current count: ${count}`}</h3>;
 }
 
+function CountButton() {
+  const { setCount } = useContext(CountContext);
+  return (
+    <button onClick={() => setCount((count) => setCount(count + 1))}>
+      Increment
+    </button>
+  );
+}
+
 function App() {
-  const [count, setCount] = useState(0);
-
-  function incrementClick(event) {
-    setCount(count + 1);
-  }
-
   return (
     <>
       <div>
@@ -112,6 +115,7 @@ function App() {
       </div>
       <CountProvider>
         <Count />
+        <CountButton />
       </CountProvider>
     </>
   );

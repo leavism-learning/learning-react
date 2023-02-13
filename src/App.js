@@ -81,6 +81,7 @@ const CountContext = createContext();
 
 function CountProvider({ children }) {
   const [count, setCount] = useState(0);
+
   return (
     <CountContext.Provider value={{ count, setCount }}>
       {children}
@@ -94,12 +95,8 @@ function Count() {
 }
 
 function CountButton() {
-  const { setCount } = useContext(CountContext);
-  return (
-    <button onClick={() => setCount((count) => setCount(count + 1))}>
-      Increment
-    </button>
-  );
+  const { count, setCount } = useContext(CountContext);
+  return <button onClick={() => setCount(count + 1)}>Increment</button>;
 }
 
 function App() {

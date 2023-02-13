@@ -16,14 +16,6 @@ function MyIcon() {
   return <i>🔥</i>;
 }
 
-const CustomButton = (props) => {
-  return (
-    <button onClick={props.onClick} type='button'>
-      {props.children}
-    </button>
-  );
-};
-
 const data = [
   { id: 1, name: 'Fido 🐕' },
   { id: 2, name: 'Snowball 🐈' },

@@ -1,0 +1,35 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1,
+h3,
+p {
+  margin: 1rem auto;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+button {
+  width: auto;
+  margin: auto;
+  height: 2.75rem;
+  min-width: 6.5rem;
+  color: #030303cc;
+  border-radius: 4px;
+  background: #0091ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 12px #03030350;
+}
+
+.error-boundary {
+  padding: 0.5rem 1rem;
+  border: solid 4px #ff0000;
+  border-radius: 0.5rem;
+}

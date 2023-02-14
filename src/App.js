@@ -2,6 +2,7 @@ import ErrorBoundary from './ErrorBoundary';
 import Countdown from './ticker';
 import { CountProvider, Count, CountButton } from './count';
 import './App.css';
+import './style.css';
 
 function Card(props) {
   return (

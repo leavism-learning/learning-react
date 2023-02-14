@@ -1,6 +1,6 @@
-import React, { useState, useContext, createContext } from 'react';
 import ErrorBoundary from './ErrorBoundary';
 import Countdown from './ticker';
+import { CountProvider, Count, CountButton } from './count';
 import './App.css';
 
 function Card(props) {
@@ -31,28 +31,6 @@ function ListOfAnimals() {
       })}
     </ul>
   );
-}
-
-const CountContext = createContext();
-
-function CountProvider({ children }) {
-  const [count, setCount] = useState(0);
-
-  return (
-    <CountContext.Provider value={{ count, setCount }}>
-      {children}
-    </CountContext.Provider>
-  );
-}
-
-function Count() {
-  const { count } = useContext(CountContext);
-  return <h3>{`Current count: ${count}`}</h3>;
-}
-
-function CountButton() {
-  const { count, setCount } = useContext(CountContext);
-  return <button onClick={() => setCount(count + 1)}>Increment</button>;
 }
 
 function App() {
